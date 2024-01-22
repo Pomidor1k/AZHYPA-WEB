@@ -243,6 +243,29 @@ app.post('/webhook', async (req, res) => {
   }
 });
 
+async function addUserAfterPaymentToFirestore(userEmail, userName, userPhone, paymentPrice, productId) {
+  const db = admin.firestore();
+
+  try {
+    // Создаем документ с названием userEmail
+    const userDocRef = db.collection('paymentKeys').doc(userEmail);
+
+    // Добавляем поля в документ
+    await userDocRef.set({
+      userName: userName || "none",
+      userPhone: userPhone || "none",
+      paymentPrice: paymentPrice || "none",
+      productId: productId || "none"
+    });
+    
+    console.log(`Пользователь успешно добавлен в Firestore: ${userEmail}`);
+    return true;
+  } catch (error) {
+    console.error('Ошибка при добавлении пользователя в Firestore:', error);
+    return false;
+  }
+}
+
 
 
 
