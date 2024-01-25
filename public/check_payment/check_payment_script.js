@@ -3,6 +3,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     tg.expand()
     const input = document.querySelector('.input_field');
 
+    if (tg.colorScheme === 'light') {
+        input.style.backgroundColor = '#8f8f8f'
+    }
 
     // Обработчик события для инпута
     input.addEventListener('input', (event) => {
