@@ -94,6 +94,12 @@ app.get('/aon9UHD89fhk', (req, res) => { //!ВИДЕО 4 bas-pro
 app.use('/aon9UHD89fhk', express.static(path.join(__dirname, 'public', 'video_four_bas_pro')));
 
 
+app.get('/amfjxu9HInd', (req, res) => { //!ВИДЕО БОНУС
+  res.sendFile(path.join(__dirname, 'public', 'video_bonus', 'video.html'));
+});
+app.use('/amfjxu9HInd', express.static(path.join(__dirname, 'public', 'video_bonus')));
+
+
 
 
 app.post("/check-user-primary-payment", async (req, res) => {
