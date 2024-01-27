@@ -127,7 +127,8 @@ body, html {
 
 .chosen {
     transition: .2s ease-out;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,150,20,1) 0%, rgba(0,196,62,1) 100%);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,150,110,0.9360994397759104) 0%, rgba(27,255,179,1) 100%);
     color: #fff;
 }
 

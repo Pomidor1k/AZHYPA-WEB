@@ -20,9 +20,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     
     nextButton.forEach(nextButton => {
         nextButton.addEventListener('click', () => {
-            console.log(answers);
+            tg.HapticFeedback.impactOccurred('heavy')
             const currentAnswers = document.querySelectorAll(`.page_${currentQuestion} .question_item`);
             if (Array.from(currentAnswers).every(element => !element.classList.contains('chosen'))) {
+                tg.HapticFeedback.notificationOccurred('error')
                 tg.showPopup({
                     title: "Ошибка",
                     message: "Пожалуйста, выберите ответ перед тем как продолжить!"
@@ -31,6 +32,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             }
     
             if (currentQuestion === 5 && answers.qst5.length < 2) {
+                tg.HapticFeedback.notificationOccurred('error')
                 tg.showPopup({
                     title: "Ошибка",
                     message: "Пожалуйста, выберите несколько ответов!"
@@ -95,6 +97,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     answer.forEach(answerElement => {
         answerElement.addEventListener('click', () => {
+            tg.HapticFeedback.impactOccurred('soft')
             const isChosen = answerElement.classList.contains('chosen');
 
             if (currentQuestion !== 5) {
@@ -134,6 +137,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const goBackToBotButton = document.querySelector('.go_back_to_bot')
 
     goBackToBotButton.addEventListener('click', () => {
+        tg.HapticFeedback.impactOccurred('heavy')
         const data = JSON.stringify({
             webAppType: 'test-one-passed',
             testAttempts: localStorage.getItem("firstTestAttempts"),
@@ -147,6 +151,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     const restartButton = document.querySelector('.fail_button')
     restartButton.addEventListener('click', () => {
+        tg.HapticFeedback.notificationOccurred('error')
         location.reload();
     })
 
@@ -154,6 +159,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const skipTestButton = document.querySelector('.skip_test_button')
 
     skipTestButton.addEventListener('click', () => {
+        tg.HapticFeedback.notificationOccurred('error')
         const data = JSON.stringify({
             webAppType: 'test-one-skipped',
             testAttempts: localStorage.getItem("firstTestAttempts"),
