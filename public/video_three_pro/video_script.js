@@ -1,3 +1,8 @@
+var player = videojs("my-video", {
+  playbackRates: [0.5, 1, 1.5, 2],
+  disablePictureInPicture: true,
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Получаем элемент видео
   var videoElement = document.getElementById("my-video");
